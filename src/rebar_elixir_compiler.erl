@@ -86,6 +86,8 @@ dotex_compile(Config, OutDir) ->
     dotex_compile(Config, OutDir, []).
 
 dotex_compile(Config, OutDir, MoreSources) ->
+    io:format("~p ~p ~p", [Config, OutDir, MoreSources]),
+    
     App = application:load(elixir),
     Loaded = (App == ok orelse App == {error, {already_loaded, elixir}}) and
              (code:ensure_loaded(elixir) == {module, elixir}),
