@@ -93,7 +93,7 @@ dotex_compile(Config, OutDir, MoreSources) ->
     Loaded = (App == ok orelse App == {error, {already_loaded, elixir}}) and
              (EnsureLoaded == {module, elixir}),
 
-    io:format("result is ~p ~p", [App, EnsureLoaded]),
+    io:format("result is ~p ~p~n~p", [App, EnsureLoaded, code:get_path()]),
              
     case Loaded of
         true ->
