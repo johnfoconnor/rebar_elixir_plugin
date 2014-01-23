@@ -89,11 +89,11 @@ dotex_compile(Config, OutDir, MoreSources) ->
     io:format("~p ~p ~p", [Config, OutDir, MoreSources]),
     
     App = application:load(elixir),
-
+    EnsureLoaded = code:ensure_loaded(elixir),
     Loaded = (App == ok orelse App == {error, {already_loaded, elixir}}) and
-             (code:ensure_loaded(elixir) == {module, elixir}),
+             (EnsureLoaded == {module, elixir}),
 
-    io:format("result is ~p ~p", [App, Loaded]),
+    io:format("result is ~p ~p", [App, EnsureLoaded]),
              
     case Loaded of
         true ->
